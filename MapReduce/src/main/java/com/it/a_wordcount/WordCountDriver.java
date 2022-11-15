@@ -1,5 +1,6 @@
 package com.it.a_wordcount;
 
+import lombok.val;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -20,8 +21,8 @@ public class WordCountDriver {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 
         // 1、获取job
-        Configuration entries = new Configuration();
-        Job job = Job.getInstance(entries);
+        val configuration = new Configuration();
+        val job = Job.getInstance(configuration);
 
         // 2、设置jar包路径
         job.setJarByClass(WordCountDriver.class);
@@ -39,8 +40,8 @@ public class WordCountDriver {
         job.setOutputValueClass(IntWritable.class);
 
         // 6、设置输入路径和输出路径
-        FileInputFormat.setInputPaths(job, new Path("F:\\0Data\\input\\input1"));
-        FileOutputFormat.setOutputPath(job, new Path("F:\\0Data\\output\\output1"));
+        FileInputFormat.setInputPaths(job, new Path("F:\\0Data\\input\\input01"));
+        FileOutputFormat.setOutputPath(job, new Path("F:\\0Data\\output\\output01"));
 
         // 7、提交作业
         boolean result = job.waitForCompletion(true);
